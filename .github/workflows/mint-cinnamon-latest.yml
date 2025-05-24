@@ -1,4 +1,4 @@
-name: ubuntu-latest Developement Build
+name: mint-latest Developement Build
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Update Ubuntu
+    - name: Update Mint
       run: |
         sudo apt-get update
 
@@ -66,13 +66,13 @@ jobs:
         cd src
         ls -l build/
 
-    - name: Build Ubuntu Developement Release
+    - name: Build Mint Developement Release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: "ubuntu-latest"
+        automatic_release_tag: "mint-latest"
         prerelease: true
-        title: "Ubuntu Development Release"
+        title: "Mint Development Release"
         files: |
           src/build/seergdb.tar.gz
 
@@ -98,6 +98,6 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         automatic_release_tag: "debian-pkg-latest"
         prerelease: true
-        title: "Debian Package Release"
+        title: "Mint Package Release"
         files: |
           ../seergdb_*_amd64.deb

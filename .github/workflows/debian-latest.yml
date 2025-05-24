@@ -1,6 +1,7 @@
-name: debian-bullseye Developement Build
+name: debian-latest Developement Build
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -15,7 +16,7 @@ jobs:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: debian-bullseye
+    runs-on: debian-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -46,7 +47,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         cd src
-        cmake -B ${{github.workspace}}/src/build -DQTVERSION=QT5 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        cmake -B ${{github.workspace}}/src/build -DQTVERSION=QT6 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       # Build your program with the given configuration
